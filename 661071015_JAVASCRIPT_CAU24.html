@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 24 - Xuất Thứ</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; background-color: #ffcdd2; }
+        td { border: 2px solid #283593; padding: 10px; font-weight: bold; }
+        input, select { padding: 5px; }
+        button { padding: 5px 15px; border-radius: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Ngày <input type="number" id="ngay" value="12" style="width: 50px;"></td>
+            <td>Tháng Select: 
+                <select id="thang">
+                    <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                    <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                    <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                    <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                </select>
+            </td>
+            <td>Năm <input type="number" id="nam" value="2015" style="width: 80px;"></td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: center;">
+                <button onclick="xuatThu()">Xuất thứ</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: center; color: #283593; font-size: 18px;" id="kq">
+                Thứ 2 Ngày 12 tháng 1 năm 2015
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        function xuatThu() {
+            let ngay = document.getElementById('ngay').value;
+            let thang = document.getElementById('thang').value;
+            let nam = document.getElementById('nam').value;
+            
+            let d = new Date(nam, thang - 1, ngay); 
+            let days = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
+            
+            let ketQua = days[d.getDay()] + " Ngày " + ngay + " tháng " + thang + " năm " + nam;
+            document.getElementById('kq').innerText = ketQua;
+        }
+    </script>
+</body>
+</html>

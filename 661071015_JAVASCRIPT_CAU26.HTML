@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 26 - Can Chi</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; background-color: #e0f7fa; }
+        td { border: 2px solid #283593; padding: 15px; font-weight: bold; text-align: center; }
+        input { padding: 5px; background: #fff; }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="3" style="color: #00838f; font-size: 20px;">TÍNH CAN CHI CỦA NGÀY ÂM LỊCH</td>
+        </tr>
+        <tr>
+            <td>Năm dương lịch<br><input type="text" id="namDuong" value="2015"></td>
+            <td style="vertical-align: bottom;"><button onclick="tinhCanChi()">---></button></td>
+            <td>Can chi năm âm lịch<br><input type="text" id="namAm" readonly></td>
+        </tr>
+    </table>
+
+    <script>
+        function tinhCanChi() {
+            let nam = document.getElementById('namDuong').value;
+            if(isNaN(nam) || nam.trim() === '') {
+                alert("Lỗi: Năm nhập vào phải là một số hợp lệ!");
+                return;
+            }
+            
+            nam = parseInt(nam);
+            let mangCan = ['Canh', 'Tân', 'Nhâm', 'Quý', 'Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ'];
+            let mangChi = ['Thân', 'Dậu', 'Tuất', 'Hợi', 'Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi'];
+            
+            document.getElementById('namAm').value = mangCan[nam % 10] + " " + mangChi[nam % 12];
+        }
+    </script>
+</body>
+</html>

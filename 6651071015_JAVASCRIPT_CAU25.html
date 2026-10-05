@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 25 - Tính Tiền</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .box { background-color: #fff59d; border: 2px solid #283593; padding: 15px; width: fit-content; }
+        select { width: 100%; background: #fff; }
+        table { border-collapse: collapse; width: 100%; margin-top: 15px; background: #e0f7fa; }
+        td, th { border: 2px solid #283593; padding: 5px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3 style="text-align: center; color: red; margin-top: 0;">THỰC ĐƠN</h3>
+        <div style="display: flex; gap: 20px;">
+            <div>
+                <b style="color: blue;">Thức ăn</b><br>
+                <select id="thucan" multiple size="7">
+                    <option value="20000">Bún bò</option>
+                    <option value="18000">Hủ tiếu</option>
+                    <option value="17000">Bánh canh</option>
+                </select>
+            </div>
+            <div>
+                <b style="color: blue;">Nước uống</b><br>
+                <select id="nuoc" multiple size="7">
+                    <option value="12000">Cà phê đá</option>
+                    <option value="15000">Cà phê sữa</option>
+                    <option value="12000">Chanh dây</option>
+                </select>
+            </div>
+            <div>
+                <b style="color: blue;">Thời điểm</b><br>
+                <label><input type="radio" name="thoidiem" value="ngay" checked> Ban ngày</label><br>
+                <label><input type="radio" name="thoidiem" id="dem"> Ban đêm</label>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+            <button onclick="tinhTien()">Tính tiền</button>
+        </div>
+        <table>
+            <thead>
+                <tr><td style="color:blue;">Các món đã dùng</td><td style="color:blue;">Tiền</td></tr>
+            </thead>
+            <tbody id="hoadon"></tbody>
+            <tfoot>
+                <tr><td style="color:red;">Tổng tiền</td><td style="color:red;" id="tong">0</td></tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script>
+        function tinhTien() {
+            let thucAn = document.getElementById('thucan').selectedOptions;
+            let nuoc = document.getElementById('nuoc').selectedOptions;
+            let hoadonHTML = '';
+            let tongTien = 0;
+
+            for (let i = 0; i < thucAn.length; i++) {
+                tongTien += parseInt(thucAn[i].value);
+                hoadonHTML += `<tr><td>${thucAn[i].text}</td><td>${thucAn[i].value}</td></tr>`;
+            }
+            for (let i = 0; i < nuoc.length; i++) {
+                tongTien += parseInt(nuoc[i].value);
+                hoadonHTML += `<tr><td>${nuoc[i].text}</td><td>${nuoc[i].value}</td></tr>`;
+            }
+
+            if (document.getElementById('dem').checked) {
+                tongTien = tongTien * 1.1; 
+            }
+
+            document.getElementById('hoadon').innerHTML = hoadonHTML;
+            document.getElementById('tong').innerText = tongTien.toLocaleString() + ' đồng';
+        }
+    </script>
+</body>
+</html>

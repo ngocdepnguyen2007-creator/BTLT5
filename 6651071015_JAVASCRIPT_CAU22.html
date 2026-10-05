@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 22 - Tính Toán</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .box { border: 2px solid #ddd; padding: 20px; width: 300px; }
+        input { margin-bottom: 10px; padding: 5px; width: 90%; }
+        button { padding: 5px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>1st Number: <input type="number" id="num1" value="12"></p>
+        <p>2nd Number: <input type="number" id="num2" value="10"></p>
+        <button onclick="tinhToan('nhan')">Multiply</button>
+        <button onclick="tinhToan('chia')">Divide</button>
+        <p>The Result Is: <br><strong id="kq" style="font-size: 20px;">120</strong></p>
+    </div>
+
+    <script>
+        function tinhToan(phepTinh) {
+            let n1 = Number(document.getElementById('num1').value);
+            let n2 = Number(document.getElementById('num2').value);
+            let kq = (phepTinh === 'nhan') ? (n1 * n2) : (n1 / n2);
+            document.getElementById('kq').innerText = kq;
+        }
+    </script>
+</body>
+</html>
